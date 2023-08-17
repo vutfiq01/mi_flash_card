@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:mi_flash_card/profile_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -9,88 +13,96 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: Colors.teal,
-        body: SafeArea(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const CircleAvatar(
-                radius: 50,
-                backgroundImage: AssetImage('images/profile.jpg'),
-              ),
-              const Text(
-                'Md Rafiqul Islam',
-                style: TextStyle(
-                  fontFamily: 'Arizonia',
-                  fontSize: 35,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
+    return Scaffold(
+      backgroundColor: Colors.teal,
+      body: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ProfilePage()),
+                );
+              },
+              child: const Hero(
+                tag: 'image-hero',
+                child: CircleAvatar(
+                  radius: 50,
+                  backgroundImage: AssetImage('images/profile.jpg'),
                 ),
               ),
-              Text(
-                'SOFTWARE ENGINEER',
-                style: TextStyle(
-                  fontFamily: 'Poppins',
-                  fontSize: 15,
-                  color: Colors.teal[100],
-                  letterSpacing: 2.5,
-                  fontWeight: FontWeight.bold,
-                ),
+            ),
+            const Text(
+              'Md Rafiqul Islam',
+              style: TextStyle(
+                fontFamily: 'Arizonia',
+                fontSize: 35,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
               ),
-              SizedBox(
-                height: 20,
-                width: 150,
-                child: Divider(
-                  color: Colors.teal[100],
-                ),
+            ),
+            Text(
+              'SOFTWARE ENGINEER',
+              style: TextStyle(
+                fontFamily: 'Poppins',
+                fontSize: 15,
+                color: Colors.teal[100],
+                letterSpacing: 2.5,
+                fontWeight: FontWeight.bold,
               ),
-              Card(
-                margin: const EdgeInsets.symmetric(
-                  vertical: 10.0,
-                  horizontal: 25.0,
-                ),
-                child: ListTile(
-                  leading: const Icon(
-                    Icons.phone,
-                    size: 25,
-                    color: Colors.teal,
-                  ),
-                  title: Text(
-                    '+88017-000-00000',
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontFamily: 'Poppins',
-                      color: Colors.teal[900],
-                    ),
-                  ),
-                ),
+            ),
+            SizedBox(
+              height: 20,
+              width: 150,
+              child: Divider(
+                color: Colors.teal[100],
               ),
-              Card(
-                margin: const EdgeInsets.symmetric(
-                  vertical: 10.0,
-                  horizontal: 25.0,
+            ),
+            Card(
+              margin: const EdgeInsets.symmetric(
+                vertical: 10.0,
+                horizontal: 25.0,
+              ),
+              child: ListTile(
+                leading: const Icon(
+                  Icons.phone,
+                  size: 25,
+                  color: Colors.teal,
                 ),
-                child: ListTile(
-                  leading: const Icon(
-                    Icons.email,
-                    size: 25,
-                    color: Colors.teal,
-                  ),
-                  title: Text(
-                    'rafiqul@abcd.com',
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontFamily: 'Poppins',
-                      color: Colors.teal[900],
-                    ),
+                title: Text(
+                  '+88017-000-00000',
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontFamily: 'Poppins',
+                    color: Colors.teal[900],
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+            Card(
+              margin: const EdgeInsets.symmetric(
+                vertical: 10.0,
+                horizontal: 25.0,
+              ),
+              child: ListTile(
+                leading: const Icon(
+                  Icons.email,
+                  size: 25,
+                  color: Colors.teal,
+                ),
+                title: Text(
+                  'rafiqul@abcd.com',
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontFamily: 'Poppins',
+                    color: Colors.teal[900],
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
