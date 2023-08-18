@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mi_flash_card/profile_page.dart';
+import 'package:mi_flash_card/widget/custom_appbar.dart';
+import 'package:mi_flash_card/widget/navigation_drawer.dart';
 
 void main() {
   runApp(const MaterialApp(
@@ -14,7 +16,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const CustomAppBar(
+        title: 'General Profile',
+      ),
       backgroundColor: Colors.teal,
+      drawer: const MyNavigationDrawer(),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
