@@ -33,3 +33,6 @@ flutter:
     - family: Poppins
       fonts:
         - asset: fonts/Poppins-Regular.ttf
+    - family: FrederickatheGreat
+      fonts:
+        - asset: fonts/FrederickatheGreat-Regular.ttf
