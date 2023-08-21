@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+// import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 // import 'package:mi_flash_card/dating_profile_page.dart';
 // import 'package:mi_flash_card/dice_app.dart';
 import 'package:mi_flash_card/job_profile_page.dart';
