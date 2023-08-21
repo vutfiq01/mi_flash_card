@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-// import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 // import 'package:mi_flash_card/dating_profile_page.dart';
 // import 'package:mi_flash_card/dice_app.dart';
-// import 'package:mi_flash_card/job_profile_page.dart';
+import 'package:mi_flash_card/job_profile_page.dart';
 import 'package:mi_flash_card/main.dart';
 
 class MyNavigationDrawer extends StatelessWidget {
@@ -89,30 +89,30 @@ class MyNavigationDrawer extends StatelessWidget {
                 ),
               ),
             ),
-            // ListTile(
-            //   tileColor: Colors.teal,
-            //   onTap: () {
-            //     Navigator.pop(context);
-            //     Navigator.push(
-            //       context,
-            //       MaterialPageRoute(
-            //           builder: (context) => const JobProfilePage()),
-            //     );
-            //   },
-            //   leading: const Icon(
-            //     Icons.engineering,
-            //     size: 25,
-            //     color: Colors.white,
-            //   ),
-            //   title: const Text(
-            //     'Job Profile',
-            //     style: TextStyle(
-            //       fontSize: 15,
-            //       fontFamily: 'Poppins',
-            //       color: Colors.white,
-            //     ),
-            //   ),
-            // ),
+            ListTile(
+              tileColor: Colors.teal,
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const JobProfilePage()),
+                );
+              },
+              leading: const Icon(
+                Icons.engineering,
+                size: 25,
+                color: Colors.white,
+              ),
+              title: const Text(
+                'Job Profile',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontFamily: 'Poppins',
+                  color: Colors.white,
+                ),
+              ),
+            ),
             // ListTile(
             //   tileColor: Colors.teal,
             //   onTap: () {
