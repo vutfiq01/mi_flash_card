@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:mi_flash_card/ask_anything_page.dart';
 import 'package:mi_flash_card/dating_profile_page.dart';
 import 'package:mi_flash_card/dice_app.dart';
 import 'package:mi_flash_card/job_profile_page.dart';
@@ -155,6 +156,31 @@ class MyNavigationDrawer extends StatelessWidget {
               ),
               title: const Text(
                 'Play Dice',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontFamily: 'Poppins',
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            ListTile(
+              tileColor: Colors.teal,
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const AskAnything(),
+                  ),
+                );
+              },
+              leading: const Icon(
+                FontAwesomeIcons.solidQuestionCircle,
+                size: 25,
+                color: Colors.white,
+              ),
+              title: const Text(
+                'Ask Anything',
                 style: TextStyle(
                   fontSize: 15,
                   fontFamily: 'Poppins',
