@@ -5,6 +5,7 @@ import 'package:mi_flash_card/dating_profile_page.dart';
 import 'package:mi_flash_card/dice_app.dart';
 import 'package:mi_flash_card/job_profile_page.dart';
 import 'package:mi_flash_card/main.dart';
+import 'package:mi_flash_card/xylophone_app.dart';
 
 class MyNavigationDrawer extends StatelessWidget {
   const MyNavigationDrawer({super.key});
@@ -181,6 +182,31 @@ class MyNavigationDrawer extends StatelessWidget {
               ),
               title: const Text(
                 'Ask Anything',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontFamily: 'Poppins',
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            ListTile(
+              tileColor: Colors.teal,
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const XylophoneApp(),
+                  ),
+                );
+              },
+              leading: const Icon(
+                FontAwesomeIcons.music,
+                size: 25,
+                color: Colors.white,
+              ),
+              title: const Text(
+                'Play Xylophone',
                 style: TextStyle(
                   fontSize: 15,
                   fontFamily: 'Poppins',
