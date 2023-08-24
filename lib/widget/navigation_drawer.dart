@@ -5,6 +5,7 @@ import 'package:mi_flash_card/dating_profile_page.dart';
 import 'package:mi_flash_card/dice_app.dart';
 import 'package:mi_flash_card/job_profile_page.dart';
 import 'package:mi_flash_card/main.dart';
+import 'package:mi_flash_card/quiz_app.dart';
 import 'package:mi_flash_card/xylophone_app.dart';
 
 class MyNavigationDrawer extends StatelessWidget {
@@ -103,6 +104,12 @@ class MyNavigationDrawer extends StatelessWidget {
               pageTitle: 'Play Xylophone',
               icon: FontAwesomeIcons.music,
               page: const XylophoneApp(appBarTitle: 'Play Xylophone'),
+            ),
+            drawerItem(
+              context: context,
+              pageTitle: 'Attempt Quiz',
+              icon: FontAwesomeIcons.leanpub,
+              page: const QuizApp(appBarTitle: 'Attempt Quiz'),
             ),
           ],
         ),
