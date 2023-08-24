@@ -3,13 +3,14 @@ import 'package:mi_flash_card/widget/custom_appbar.dart';
 import 'package:mi_flash_card/widget/navigation_drawer.dart';
 
 class DatingProfilePage extends StatelessWidget {
-  const DatingProfilePage({super.key});
+  final String appBarTitle;
+  const DatingProfilePage({super.key, required this.appBarTitle});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.teal,
-      appBar: const CustomAppBar(title: 'Dating Profile'),
+      appBar: CustomAppBar(title: appBarTitle),
       drawer: const MyNavigationDrawer(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

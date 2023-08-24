@@ -6,18 +6,19 @@ import 'package:mi_flash_card/widget/navigation_drawer.dart';
 void main() {
   runApp(const MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: MyApp(),
+    home: MyApp(appBarTitle: 'General Profile'),
   ));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final String appBarTitle;
+  const MyApp({super.key, required this.appBarTitle});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(
-        title: 'General Profile',
+      appBar: CustomAppBar(
+        title: appBarTitle,
       ),
       backgroundColor: Colors.teal,
       drawer: const MyNavigationDrawer(),

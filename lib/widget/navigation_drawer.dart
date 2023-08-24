@@ -68,153 +68,73 @@ class MyNavigationDrawer extends StatelessWidget {
         child: Wrap(
           runSpacing: 25,
           children: [
-            ListTile(
-              tileColor: Colors.teal,
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const MyApp()),
-                );
-              },
-              leading: const Icon(
-                Icons.home_outlined,
-                size: 25,
-                color: Colors.white,
-              ),
-              title: const Text(
-                'General Profile',
-                style: TextStyle(
-                  fontSize: 15,
-                  fontFamily: 'Poppins',
-                  color: Colors.white,
-                ),
-              ),
+            drawerItem(
+              context: context,
+              pageTitle: 'General Profile',
+              icon: Icons.home_outlined,
+              page: const MyApp(appBarTitle: 'General Profile'),
             ),
-            ListTile(
-              tileColor: Colors.teal,
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const JobProfilePage()),
-                );
-              },
-              leading: const Icon(
-                Icons.engineering,
-                size: 25,
-                color: Colors.white,
-              ),
-              title: const Text(
-                'Job Profile',
-                style: TextStyle(
-                  fontSize: 15,
-                  fontFamily: 'Poppins',
-                  color: Colors.white,
-                ),
-              ),
+            drawerItem(
+              context: context,
+              pageTitle: 'Job Profile',
+              icon: Icons.engineering,
+              page: const JobProfilePage(appBarTitle: 'Job Profile'),
             ),
-            ListTile(
-              tileColor: Colors.teal,
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const DatingProfilePage()),
-                );
-              },
-              leading: const Icon(
-                Icons.favorite,
-                size: 25,
-                color: Colors.white,
-              ),
-              title: const Text(
-                'Dating Profile',
-                style: TextStyle(
-                  fontSize: 15,
-                  fontFamily: 'Poppins',
-                  color: Colors.white,
-                ),
-              ),
+            drawerItem(
+              context: context,
+              pageTitle: 'Dating Profile',
+              icon: Icons.favorite,
+              page: const DatingProfilePage(appBarTitle: 'Dating Profile'),
             ),
-            ListTile(
-              tileColor: Colors.teal,
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const DicePage(),
-                  ),
-                );
-              },
-              leading: const Icon(
-                FontAwesomeIcons.dice,
-                size: 25,
-                color: Colors.white,
-              ),
-              title: const Text(
-                'Play Dice',
-                style: TextStyle(
-                  fontSize: 15,
-                  fontFamily: 'Poppins',
-                  color: Colors.white,
-                ),
-              ),
+            drawerItem(
+              context: context,
+              pageTitle: 'Play Dice',
+              icon: FontAwesomeIcons.dice,
+              page: const DicePage(appBarTitle: 'Play Dice'),
             ),
-            ListTile(
-              tileColor: Colors.teal,
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const AskAnything(),
-                  ),
-                );
-              },
-              leading: const Icon(
-                FontAwesomeIcons.solidQuestionCircle,
-                size: 25,
-                color: Colors.white,
-              ),
-              title: const Text(
-                'Ask Anything',
-                style: TextStyle(
-                  fontSize: 15,
-                  fontFamily: 'Poppins',
-                  color: Colors.white,
-                ),
-              ),
+            drawerItem(
+              context: context,
+              pageTitle: 'Ask Anything',
+              icon: FontAwesomeIcons.solidQuestionCircle,
+              page: const AskAnything(appBarTitle: 'Ask Anything'),
             ),
-            ListTile(
-              tileColor: Colors.teal,
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const XylophoneApp(),
-                  ),
-                );
-              },
-              leading: const Icon(
-                FontAwesomeIcons.music,
-                size: 25,
-                color: Colors.white,
-              ),
-              title: const Text(
-                'Play Xylophone',
-                style: TextStyle(
-                  fontSize: 15,
-                  fontFamily: 'Poppins',
-                  color: Colors.white,
-                ),
-              ),
+            drawerItem(
+              context: context,
+              pageTitle: 'Play Xylophone',
+              icon: FontAwesomeIcons.music,
+              page: const XylophoneApp(appBarTitle: 'Play Xylophone'),
             ),
           ],
         ),
       );
+
+  Widget drawerItem(
+      {required context,
+      required String pageTitle,
+      required IconData icon,
+      required Widget page}) {
+    return ListTile(
+      tileColor: Colors.teal,
+      onTap: () {
+        Navigator.pop(context);
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => page),
+        );
+      },
+      leading: Icon(
+        icon,
+        size: 25,
+        color: Colors.white,
+      ),
+      title: Text(
+        pageTitle,
+        style: const TextStyle(
+          fontSize: 15,
+          fontFamily: 'Poppins',
+          color: Colors.white,
+        ),
+      ),
+    );
+  }
 }

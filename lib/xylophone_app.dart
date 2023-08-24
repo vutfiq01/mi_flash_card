@@ -4,14 +4,15 @@ import 'package:mi_flash_card/widget/navigation_drawer.dart';
 import 'package:audioplayers/audioplayers.dart';
 
 class XylophoneApp extends StatelessWidget {
-  const XylophoneApp({super.key});
+  final String appBarTitle;
+  const XylophoneApp({super.key, required this.appBarTitle});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
-      appBar: const CustomAppBar(
-        title: 'Play Xylophone',
+      appBar: CustomAppBar(
+        title: appBarTitle,
       ),
       drawer: const MyNavigationDrawer(),
       body: SafeArea(

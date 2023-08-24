@@ -4,15 +4,16 @@ import 'package:mi_flash_card/widget/custom_appbar.dart';
 import 'package:mi_flash_card/widget/navigation_drawer.dart';
 
 class JobProfilePage extends StatelessWidget {
+  final String appBarTitle;
   final double coverHeight = 280;
   final double profileHeight = 144;
-  const JobProfilePage({super.key});
+  const JobProfilePage({super.key, required this.appBarTitle});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.teal,
-      appBar: const CustomAppBar(title: 'Job Profile'),
+      appBar: CustomAppBar(title: appBarTitle),
       drawer: const MyNavigationDrawer(),
       body: ListView(
         padding: EdgeInsets.zero,

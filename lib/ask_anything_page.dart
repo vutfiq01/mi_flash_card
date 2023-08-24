@@ -4,15 +4,16 @@ import 'package:mi_flash_card/widget/navigation_drawer.dart';
 import 'dart:math';
 
 class AskAnything extends StatelessWidget {
-  const AskAnything({super.key});
+  final String appBarTitle;
+  const AskAnything({super.key, required this.appBarTitle});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: Colors.teal,
-      appBar: CustomAppBar(title: 'Ask Anything'),
-      drawer: MyNavigationDrawer(),
-      body: AskAnythingBody(),
+      appBar: CustomAppBar(title: appBarTitle),
+      drawer: const MyNavigationDrawer(),
+      body: const AskAnythingBody(),
     );
   }
 }
