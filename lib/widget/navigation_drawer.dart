@@ -6,6 +6,7 @@ import 'package:mi_flash_card/dice_app.dart';
 import 'package:mi_flash_card/job_profile_page.dart';
 import 'package:mi_flash_card/main.dart';
 import 'package:mi_flash_card/quiz_app.dart';
+import 'package:mi_flash_card/unfold_story_app.dart';
 import 'package:mi_flash_card/xylophone_app.dart';
 
 class MyNavigationDrawer extends StatelessWidget {
@@ -110,6 +111,12 @@ class MyNavigationDrawer extends StatelessWidget {
               pageTitle: 'Attempt Quiz',
               icon: FontAwesomeIcons.leanpub,
               page: const QuizApp(appBarTitle: 'Attempt Quiz'),
+            ),
+            drawerItem(
+              context: context,
+              pageTitle: 'Unfold Story',
+              icon: FontAwesomeIcons.dungeon,
+              page: const UnfoldStoryApp(appBarTitle: 'Unfold Story'),
             ),
           ],
         ),
