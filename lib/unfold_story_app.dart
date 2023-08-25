@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mi_flash_card/unfoldStoryAppAssets/story_data.dart';
 import 'package:mi_flash_card/widget/custom_appbar.dart';
 import 'package:mi_flash_card/widget/navigation_drawer.dart';
 
@@ -16,6 +17,8 @@ class UnfoldStoryApp extends StatelessWidget {
     );
   }
 }
+
+StoryBrain storyBrain = StoryBrain();
 
 class StorySection extends StatefulWidget {
   const StorySection({super.key});
@@ -47,15 +50,15 @@ class _StorySectionState extends State<StorySection> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            const Expanded(
+            Expanded(
               flex: 12,
               child: Center(
                 child: Text(
-                  'Story will appear here........',
-                  style: TextStyle(
+                  storyBrain.getStory(),
+                  style: const TextStyle(
                     color: Colors.white,
                     fontFamily: 'Poppins',
-                    fontSize: 25,
+                    fontSize: 18,
                   ),
                 ),
               ),
@@ -63,15 +66,19 @@ class _StorySectionState extends State<StorySection> {
             Expanded(
               flex: 2,
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    storyBrain.nextStory(1);
+                  });
+                },
                 style: TextButton.styleFrom(
                   backgroundColor: Colors.teal[500],
                 ),
-                child: const Text(
-                  'Choice 1',
-                  style: TextStyle(
+                child: Text(
+                  storyBrain.getStoryChoice1(),
+                  style: const TextStyle(
                     fontFamily: 'Poppins',
-                    fontSize: 20,
+                    fontSize: 14,
                     color: Colors.white,
                   ),
                 ),
@@ -82,17 +89,24 @@ class _StorySectionState extends State<StorySection> {
             ),
             Expanded(
               flex: 2,
-              child: TextButton(
-                onPressed: () {},
-                style: TextButton.styleFrom(
-                  backgroundColor: Colors.teal[500],
-                ),
-                child: const Text(
-                  'Choice 2',
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontSize: 20,
-                    color: Colors.white,
+              child: Visibility(
+                visible: storyBrain.secondButtonVisibility(),
+                child: TextButton(
+                  onPressed: () {
+                    setState(() {
+                      storyBrain.nextStory(2);
+                    });
+                  },
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.teal[500],
+                  ),
+                  child: Text(
+                    storyBrain.getStoryChoice2(),
+                    style: const TextStyle(
+                      fontFamily: 'Poppins',
+                      fontSize: 14,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),
