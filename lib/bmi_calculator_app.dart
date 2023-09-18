@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mi_flash_card/widget/navigation_drawer.dart';
+import 'bmiCalculatorAppComponents/reusable_card.dart';
+import 'bmiCalculatorAppComponents/toptwocard_icon_component.dart';
+
+const bottomContainerHeight = 80.0;
+const Color topTwoContainerColor = Color(0xFF009688);
+const Color middleThreeContainerColor = Color(0xFF00796B);
+const Color bottomContainerColor = Color(0xFF00DCD6);
 
 class BmiCalculatorApp extends StatefulWidget {
   const BmiCalculatorApp({super.key});
@@ -16,66 +24,60 @@ class _BmiCalculatorAppState extends State<BmiCalculatorApp> {
         title: const Text('BMI Calculator'),
       ),
       drawer: const MyNavigationDrawer(),
-      body: const Column(
+      body: Column(
         children: <Widget>[
-          Expanded(
+          const Expanded(
             child: Row(
               children: <Widget>[
                 Expanded(
                   child: ReusableCard(
-                    cardColor: Color(0xFF00897B),
+                    cardChild: TopTwoCardChild(
+                      topTwoCardChildIcon: FontAwesomeIcons.mars,
+                      topTwoCardChildText: 'MALE',
+                    ),
+                    cardColor: topTwoContainerColor,
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
-                    cardColor: Color(0xFF00897B),
+                    cardChild: TopTwoCardChild(
+                      topTwoCardChildIcon: FontAwesomeIcons.venus,
+                      topTwoCardChildText: 'FEMALE',
+                    ),
+                    cardColor: topTwoContainerColor,
                   ),
                 ),
               ],
             ),
           ),
-          Expanded(
+          const Expanded(
             child: ReusableCard(
-              cardColor: Color(0xFF00897B),
+              cardColor: middleThreeContainerColor,
             ),
           ),
-          Expanded(
+          const Expanded(
             child: Row(
               children: <Widget>[
                 Expanded(
                   child: ReusableCard(
-                    cardColor: Color(0xFF00897B),
+                    cardColor: middleThreeContainerColor,
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
-                    cardColor: Color(0xFF00897B),
+                    cardColor: middleThreeContainerColor,
                   ),
                 ),
               ],
             ),
           ),
+          Container(
+            color: bottomContainerColor,
+            margin: const EdgeInsets.only(top: 10.0),
+            width: double.infinity,
+            height: bottomContainerHeight,
+          )
         ],
-      ),
-    );
-  }
-}
-
-class ReusableCard extends StatelessWidget {
-  const ReusableCard({
-    super.key,
-    required this.cardColor,
-  });
-
-  final Color cardColor;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(15),
-      decoration: BoxDecoration(
-        color: cardColor,
-        borderRadius: BorderRadius.circular(10.0),
       ),
     );
   }
