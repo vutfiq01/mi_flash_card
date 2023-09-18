@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mi_flash_card/ask_anything_page.dart';
+import 'package:mi_flash_card/calculator_app.dart';
 import 'package:mi_flash_card/dating_profile_page.dart';
 import 'package:mi_flash_card/dice_app.dart';
 import 'package:mi_flash_card/job_profile_page.dart';
@@ -117,6 +118,12 @@ class MyNavigationDrawer extends StatelessWidget {
               pageTitle: 'Unfold Story',
               icon: FontAwesomeIcons.dungeon,
               page: const UnfoldStoryApp(appBarTitle: 'Unfold Story'),
+            ),
+            drawerItem(
+              context: context,
+              pageTitle: 'Calculator',
+              icon: FontAwesomeIcons.calculator,
+              page: const CalculatorApp(appBarTitle: 'Calculator'),
             ),
           ],
         ),
