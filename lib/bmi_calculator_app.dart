@@ -12,17 +12,12 @@ class _BmiCalculatorAppState extends State<BmiCalculatorApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 0, 51, 43),
       appBar: AppBar(
         title: const Text('BMI Calculator'),
       ),
       drawer: const MyNavigationDrawer(),
       body: const Center(
         child: Text('Body Text'),
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
-        onPressed: () => {},
       ),
     );
   }
