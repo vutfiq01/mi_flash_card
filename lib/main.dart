@@ -1,24 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:mi_flash_card/profile_page.dart';
-import 'package:mi_flash_card/widget/custom_appbar.dart';
 import 'package:mi_flash_card/widget/navigation_drawer.dart';
 
 void main() {
-  runApp(const MaterialApp(
+  runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: MyApp(appBarTitle: 'General Profile'),
+    theme: ThemeData(
+      primaryColor: const Color(0xFF0A0D22),
+      appBarTheme: AppBarTheme(
+        backgroundColor: Colors.teal[900],
+        centerTitle: true,
+        titleTextStyle: const TextStyle(
+            fontSize: 20,
+            fontFamily: 'Poppins',
+            color: Colors.white,
+            fontWeight: FontWeight.bold),
+      ),
+    ),
+    home: const MyApp(),
   ));
 }
 
 class MyApp extends StatelessWidget {
-  final String appBarTitle;
-  const MyApp({super.key, required this.appBarTitle});
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        title: appBarTitle,
+      appBar: AppBar(
+        title: const Text('General Profile'),
       ),
       backgroundColor: Colors.teal,
       drawer: const MyNavigationDrawer(),

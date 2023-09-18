@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mi_flash_card/widget/custom_appbar.dart';
 import 'package:mi_flash_card/widget/navigation_drawer.dart';
 import 'quizAppAssets/quiz_questions.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -7,14 +6,13 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 QuizQuestions quizData = QuizQuestions();
 
 class QuizApp extends StatelessWidget {
-  final String appBarTitle;
-  const QuizApp({super.key, required this.appBarTitle});
+  const QuizApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 0, 51, 43),
-      appBar: CustomAppBar(title: appBarTitle),
+      appBar: AppBar(title: const Text('Attempt Quiz')),
       drawer: const MyNavigationDrawer(),
       body: const SafeArea(
         child: Padding(

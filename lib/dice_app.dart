@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
-import 'package:mi_flash_card/widget/custom_appbar.dart';
 import 'package:mi_flash_card/widget/navigation_drawer.dart';
 
 class DicePage extends StatelessWidget {
-  final String appBarTitle;
-  const DicePage({super.key, required this.appBarTitle});
+  const DicePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.teal,
-      appBar: CustomAppBar(title: appBarTitle),
+      appBar: AppBar(title: const Text('Play Dice')),
       drawer: const MyNavigationDrawer(),
       body: const BodyPage(),
     );
