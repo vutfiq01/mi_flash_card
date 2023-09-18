@@ -16,8 +16,66 @@ class _BmiCalculatorAppState extends State<BmiCalculatorApp> {
         title: const Text('BMI Calculator'),
       ),
       drawer: const MyNavigationDrawer(),
-      body: const Center(
-        child: Text('Body Text'),
+      body: const Column(
+        children: <Widget>[
+          Expanded(
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: ReusableCard(
+                    cardColor: Color(0xFF00897B),
+                  ),
+                ),
+                Expanded(
+                  child: ReusableCard(
+                    cardColor: Color(0xFF00897B),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: ReusableCard(
+              cardColor: Color(0xFF00897B),
+            ),
+          ),
+          Expanded(
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: ReusableCard(
+                    cardColor: Color(0xFF00897B),
+                  ),
+                ),
+                Expanded(
+                  child: ReusableCard(
+                    cardColor: Color(0xFF00897B),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ReusableCard extends StatelessWidget {
+  const ReusableCard({
+    super.key,
+    required this.cardColor,
+  });
+
+  final Color cardColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.all(15),
+      decoration: BoxDecoration(
+        color: cardColor,
+        borderRadius: BorderRadius.circular(10.0),
       ),
     );
   }

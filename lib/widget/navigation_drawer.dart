@@ -73,6 +73,12 @@ class MyNavigationDrawer extends StatelessWidget {
           children: [
             drawerItem(
               context: context,
+              pageTitle: 'BMI Calculator',
+              icon: FontAwesomeIcons.calculator,
+              page: const BmiCalculatorApp(),
+            ),
+            drawerItem(
+              context: context,
               pageTitle: 'General Profile',
               icon: Icons.home_outlined,
               page: const MyApp(),
@@ -118,12 +124,6 @@ class MyNavigationDrawer extends StatelessWidget {
               pageTitle: 'Unfold Story',
               icon: FontAwesomeIcons.dungeon,
               page: const UnfoldStoryApp(),
-            ),
-            drawerItem(
-              context: context,
-              pageTitle: 'BMI Calculator',
-              icon: FontAwesomeIcons.calculator,
-              page: const BmiCalculatorApp(),
             ),
           ],
         ),
