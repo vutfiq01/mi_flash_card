@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:mi_flash_card/bmiCalculatorAppComponents/bmi_result_page.dart';
 import 'package:mi_flash_card/widget/navigation_drawer.dart';
 import 'bmiCalculatorAppComponents/bmiapp_constants.dart';
 import 'bmiCalculatorAppComponents/reusable_card.dart';
@@ -211,11 +212,29 @@ class _BmiCalculatorAppState extends State<BmiCalculatorApp> {
               ],
             ),
           ),
-          Container(
-            color: kBottomContainerColor,
-            margin: const EdgeInsets.only(top: 10.0),
-            width: double.infinity,
-            height: kBottomContainerHeight,
+          GestureDetector(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return const BMIResultPage();
+              }));
+            },
+            child: Container(
+              color: kBottomContainerColor,
+              margin: const EdgeInsets.only(top: 10.0),
+              width: double.infinity,
+              height: kBottomContainerHeight,
+              child: const Center(
+                child: Text(
+                  'CALCULATE',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 25,
+                    fontWeight: FontWeight.w600,
+                    fontFamily: 'Poppins',
+                  ),
+                ),
+              ),
+            ),
           )
         ],
       ),
