@@ -5,9 +5,16 @@ import 'bmiCalculatorAppComponents/reusable_card.dart';
 import 'bmiCalculatorAppComponents/toptwocard_icon_component.dart';
 
 const bottomContainerHeight = 80.0;
-const Color topTwoContainerColor = Color(0xFF009688);
+const Color activeTopTwoContainerColor = Color(0xFF009688);
+const Color inactiveTopTwoContainerColor = Color(0xFF00796B);
 const Color middleThreeContainerColor = Color(0xFF00796B);
 const Color bottomContainerColor = Color(0xFF00DCD6);
+
+enum GenderType {
+  male,
+  female,
+  none,
+}
 
 class BmiCalculatorApp extends StatefulWidget {
   const BmiCalculatorApp({super.key});
@@ -17,6 +24,8 @@ class BmiCalculatorApp extends StatefulWidget {
 }
 
 class _BmiCalculatorAppState extends State<BmiCalculatorApp> {
+  GenderType selectedGender = GenderType.none;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,25 +35,43 @@ class _BmiCalculatorAppState extends State<BmiCalculatorApp> {
       drawer: const MyNavigationDrawer(),
       body: Column(
         children: <Widget>[
-          const Expanded(
+          Expanded(
             child: Row(
               children: <Widget>[
                 Expanded(
-                  child: ReusableCard(
-                    cardChild: TopTwoCardChild(
-                      topTwoCardChildIcon: FontAwesomeIcons.mars,
-                      topTwoCardChildText: 'MALE',
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        selectedGender = GenderType.male;
+                      });
+                    },
+                    child: ReusableCard(
+                      cardChild: const TopTwoCardChild(
+                        topTwoCardChildIcon: FontAwesomeIcons.mars,
+                        topTwoCardChildText: 'MALE',
+                      ),
+                      cardColor: selectedGender == GenderType.male
+                          ? activeTopTwoContainerColor
+                          : inactiveTopTwoContainerColor,
                     ),
-                    cardColor: topTwoContainerColor,
                   ),
                 ),
                 Expanded(
-                  child: ReusableCard(
-                    cardChild: TopTwoCardChild(
-                      topTwoCardChildIcon: FontAwesomeIcons.venus,
-                      topTwoCardChildText: 'FEMALE',
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        selectedGender = GenderType.female;
+                      });
+                    },
+                    child: ReusableCard(
+                      cardChild: const TopTwoCardChild(
+                        topTwoCardChildIcon: FontAwesomeIcons.venus,
+                        topTwoCardChildText: 'FEMALE',
+                      ),
+                      cardColor: selectedGender == GenderType.female
+                          ? activeTopTwoContainerColor
+                          : inactiveTopTwoContainerColor,
                     ),
-                    cardColor: topTwoContainerColor,
                   ),
                 ),
               ],
