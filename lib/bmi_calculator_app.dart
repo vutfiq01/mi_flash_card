@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mi_flash_card/widget/navigation_drawer.dart';
+import 'bmiCalculatorAppComponents/bmiapp_constants.dart';
 import 'bmiCalculatorAppComponents/reusable_card.dart';
 import 'bmiCalculatorAppComponents/toptwocard_icon_component.dart';
-
-const bottomContainerHeight = 80.0;
-const Color activeTopTwoContainerColor = Color(0xFF009688);
-const Color inactiveTopTwoContainerColor = Color(0xFF00796B);
-const Color middleThreeContainerColor = Color(0xFF00796B);
-const Color bottomContainerColor = Color(0xFF00DCD6);
 
 enum GenderType {
   male,
@@ -25,6 +20,7 @@ class BmiCalculatorApp extends StatefulWidget {
 
 class _BmiCalculatorAppState extends State<BmiCalculatorApp> {
   GenderType selectedGender = GenderType.none;
+  int personHeight = kPersonInitialHeight;
 
   @override
   Widget build(BuildContext context) {
@@ -34,52 +30,84 @@ class _BmiCalculatorAppState extends State<BmiCalculatorApp> {
       ),
       drawer: const MyNavigationDrawer(),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Expanded(
             child: Row(
               children: <Widget>[
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
+                  child: ReusableCard(
+                    onPressFunction: () {
                       setState(() {
                         selectedGender = GenderType.male;
                       });
                     },
-                    child: ReusableCard(
-                      cardChild: const TopTwoCardChild(
-                        topTwoCardChildIcon: FontAwesomeIcons.mars,
-                        topTwoCardChildText: 'MALE',
-                      ),
-                      cardColor: selectedGender == GenderType.male
-                          ? activeTopTwoContainerColor
-                          : inactiveTopTwoContainerColor,
+                    cardChild: const TopTwoCardChild(
+                      topTwoCardChildIcon: FontAwesomeIcons.mars,
+                      topTwoCardChildText: 'MALE',
                     ),
+                    cardColor: selectedGender == GenderType.male
+                        ? kActiveTopTwoContainerColor
+                        : kInactiveTopTwoContainerColor,
                   ),
                 ),
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
+                  child: ReusableCard(
+                    onPressFunction: () {
                       setState(() {
                         selectedGender = GenderType.female;
                       });
                     },
-                    child: ReusableCard(
-                      cardChild: const TopTwoCardChild(
-                        topTwoCardChildIcon: FontAwesomeIcons.venus,
-                        topTwoCardChildText: 'FEMALE',
-                      ),
-                      cardColor: selectedGender == GenderType.female
-                          ? activeTopTwoContainerColor
-                          : inactiveTopTwoContainerColor,
+                    cardChild: const TopTwoCardChild(
+                      topTwoCardChildIcon: FontAwesomeIcons.venus,
+                      topTwoCardChildText: 'FEMALE',
                     ),
+                    cardColor: selectedGender == GenderType.female
+                        ? kActiveTopTwoContainerColor
+                        : kInactiveTopTwoContainerColor,
                   ),
                 ),
               ],
             ),
           ),
-          const Expanded(
+          Expanded(
             child: ReusableCard(
-              cardColor: middleThreeContainerColor,
+              cardColor: kMiddleThreeContainerColor,
+              cardChild: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  const Text(
+                    'HEIGHT',
+                    style: kLabelStyle,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: <Widget>[
+                      Text(
+                        personHeight.toString(),
+                        style: kNumberStyle,
+                      ),
+                      const Text(
+                        'cm',
+                        style: kLabelStyle,
+                      )
+                    ],
+                  ),
+                  Slider(
+                      value: personHeight.toDouble(),
+                      min: kPersonMinHeight.toDouble(),
+                      max: kPersonMaxHeight.toDouble(),
+                      activeColor: kBottomContainerColor,
+                      inactiveColor: const Color(0xFF8D8E98),
+                      onChanged: (double newpersonHeight) {
+                        setState(() {
+                          personHeight = newpersonHeight.round();
+                        });
+                      })
+                ],
+              ),
             ),
           ),
           const Expanded(
@@ -87,22 +115,22 @@ class _BmiCalculatorAppState extends State<BmiCalculatorApp> {
               children: <Widget>[
                 Expanded(
                   child: ReusableCard(
-                    cardColor: middleThreeContainerColor,
+                    cardColor: kMiddleThreeContainerColor,
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
-                    cardColor: middleThreeContainerColor,
+                    cardColor: kMiddleThreeContainerColor,
                   ),
                 ),
               ],
             ),
           ),
           Container(
-            color: bottomContainerColor,
+            color: kBottomContainerColor,
             margin: const EdgeInsets.only(top: 10.0),
             width: double.infinity,
-            height: bottomContainerHeight,
+            height: kBottomContainerHeight,
           )
         ],
       ),
