@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:mi_flash_card/bmiCalculatorAppComponents/bmi_calculation.dart';
 import 'package:mi_flash_card/bmiCalculatorAppComponents/bmi_result_page.dart';
 import 'package:mi_flash_card/widget/navigation_drawer.dart';
 import 'bmiCalculatorAppComponents/bmiapp_constants.dart';
@@ -216,11 +217,17 @@ class _BmiCalculatorAppState extends State<BmiCalculatorApp> {
           BottomButton(
             bottomButtonText: 'CALCULATE',
             bottomButtonPress: () {
+              BmiCalculationClass calc = BmiCalculationClass(
+                  height: personHeight, weight: personWeight);
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return const BMIResultPage();
+                    return BMIResultPage(
+                      bmiResult: calc.bmiCalculate(),
+                      bmiResultText: calc.bmiResultText(),
+                      bmiResultInterpretation: calc.bmiInterpretationText(),
+                    );
                   },
                 ),
               );

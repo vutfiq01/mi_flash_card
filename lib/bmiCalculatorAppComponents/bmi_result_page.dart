@@ -4,7 +4,15 @@ import 'package:mi_flash_card/bmiCalculatorAppComponents/bottom_button.dart';
 import 'package:mi_flash_card/bmiCalculatorAppComponents/reusable_card.dart';
 
 class BMIResultPage extends StatelessWidget {
-  const BMIResultPage({super.key});
+  const BMIResultPage(
+      {super.key,
+      required this.bmiResult,
+      required this.bmiResultText,
+      required this.bmiResultInterpretation});
+
+  final String bmiResult;
+  final String bmiResultText;
+  final String bmiResultInterpretation;
 
   @override
   Widget build(BuildContext context) {
@@ -35,25 +43,25 @@ class BMIResultPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   Text(
-                    'Normal',
+                    bmiResultText,
                     style: TextStyle(
                       fontSize: 26.0,
                       fontWeight: FontWeight.bold,
                       color: Colors.teal[100],
                     ),
                   ),
-                  const Text(
-                    '23.4',
-                    style: TextStyle(
+                  Text(
+                    bmiResult,
+                    style: const TextStyle(
                       fontSize: 100.0,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
                   ),
-                  const Text(
-                    'Your BMI is result quite low, you should eat more!',
+                  Text(
+                    bmiResultInterpretation,
                     textAlign: TextAlign.center,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 22.0,
                       color: Colors.white,
                     ),
