@@ -4,10 +4,12 @@ const kBottomContainerHeight = 80.0;
 const kPersonInitialHeight = 160;
 const kPersonMinHeight = 30;
 const kPersonMaxHeight = 240;
+const kPersonInitialWeight = 55;
+const kPersonInitialAge = 30;
 
 const Color kActiveTopTwoContainerColor = Color(0xFF009688);
 const Color kInactiveTopTwoContainerColor = Color(0xFF00796B);
-const Color kMiddleThreeContainerColor = Color(0xFF00796B);
+const Color kMiddleThreeContainerColor = Color(0xFF009688);
 const Color kBottomContainerColor = Color(0xFF00DCD6);
 
 const kLabelStyle = TextStyle(

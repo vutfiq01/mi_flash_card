@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mi_flash_card/widget/navigation_drawer.dart';
 import 'bmiCalculatorAppComponents/bmiapp_constants.dart';
 import 'bmiCalculatorAppComponents/reusable_card.dart';
+import 'bmiCalculatorAppComponents/round_icon_button.dart';
 import 'bmiCalculatorAppComponents/toptwocard_icon_component.dart';
 
 enum GenderType {
@@ -21,6 +22,8 @@ class BmiCalculatorApp extends StatefulWidget {
 class _BmiCalculatorAppState extends State<BmiCalculatorApp> {
   GenderType selectedGender = GenderType.none;
   int personHeight = kPersonInitialHeight;
+  int personWeight = kPersonInitialWeight;
+  int personAge = kPersonInitialAge;
 
   @override
   Widget build(BuildContext context) {
@@ -95,32 +98,114 @@ class _BmiCalculatorAppState extends State<BmiCalculatorApp> {
                       )
                     ],
                   ),
-                  Slider(
-                      value: personHeight.toDouble(),
-                      min: kPersonMinHeight.toDouble(),
-                      max: kPersonMaxHeight.toDouble(),
-                      activeColor: kBottomContainerColor,
-                      inactiveColor: const Color(0xFF8D8E98),
-                      onChanged: (double newpersonHeight) {
-                        setState(() {
-                          personHeight = newpersonHeight.round();
-                        });
-                      })
+                  SliderTheme(
+                    data: SliderTheme.of(context).copyWith(
+                      activeTrackColor: Colors.white,
+                      inactiveTrackColor: const Color(0xFF8D8E98),
+                      thumbColor: const Color(0xFF00DCD6),
+                      overlayColor: const Color(0x2900DCD6),
+                      thumbShape: const RoundSliderThumbShape(
+                        enabledThumbRadius: 15.0,
+                      ),
+                      overlayShape: const RoundSliderOverlayShape(
+                        overlayRadius: 30.0,
+                      ),
+                    ),
+                    child: Slider(
+                        value: personHeight.toDouble(),
+                        min: kPersonMinHeight.toDouble(),
+                        max: kPersonMaxHeight.toDouble(),
+                        onChanged: (double newpersonHeight) {
+                          setState(() {
+                            personHeight = newpersonHeight.round();
+                          });
+                        }),
+                  )
                 ],
               ),
             ),
           ),
-          const Expanded(
+          Expanded(
             child: Row(
               children: <Widget>[
                 Expanded(
                   child: ReusableCard(
                     cardColor: kMiddleThreeContainerColor,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        const Text(
+                          'WEIGHT(kg)',
+                          style: kLabelStyle,
+                        ),
+                        Text(
+                          personWeight.toString(),
+                          style: kNumberStyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.minus,
+                              onPressChange: () {
+                                setState(() {
+                                  personWeight--;
+                                });
+                              },
+                            ),
+                            const SizedBox(width: 15.0),
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.plus,
+                              onPressChange: () {
+                                setState(() {
+                                  personWeight++;
+                                });
+                              },
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
                     cardColor: kMiddleThreeContainerColor,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        const Text(
+                          'AGE',
+                          style: kLabelStyle,
+                        ),
+                        Text(
+                          personAge.toString(),
+                          style: kNumberStyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.minus,
+                              onPressChange: () {
+                                setState(() {
+                                  personAge--;
+                                });
+                              },
+                            ),
+                            const SizedBox(width: 15.0),
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.plus,
+                              onPressChange: () {
+                                setState(() {
+                                  personAge++;
+                                });
+                              },
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ],
