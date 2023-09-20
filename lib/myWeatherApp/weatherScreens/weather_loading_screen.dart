@@ -1,5 +1,7 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
+import '../weatherServices/weather_location.dart';
 
 class WeatherLoadingScreen extends StatefulWidget {
   const WeatherLoadingScreen({super.key});
@@ -9,30 +11,21 @@ class WeatherLoadingScreen extends StatefulWidget {
 }
 
 class _WeatherLoadingScreenState extends State<WeatherLoadingScreen> {
-  void getPhoneLocation() async {
-    LocationPermission permission;
-    permission = await Geolocator.checkPermission();
-    permission = await Geolocator.requestPermission();
-    if (permission == LocationPermission.denied) {
-      //nothing
-    }
+  @override
+  void initState() {
+    super.initState();
+    getLocation();
+  }
 
-    Position position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.lowest);
-    print(position);
+  void getLocation() async {
+    Location currentLoc = Location();
+    await currentLoc.getCurrentLocation();
+    print(currentLoc.latitude);
+    print(currentLoc.longitude);
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            getPhoneLocation();
-          },
-          child: const Text('Get Location'),
-        ),
-      ),
-    );
+    return const Scaffold();
   }
 }
