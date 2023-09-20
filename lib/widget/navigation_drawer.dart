@@ -9,6 +9,7 @@ import 'package:mi_flash_card/job_profile_page.dart';
 import 'package:mi_flash_card/quiz_app.dart';
 import 'package:mi_flash_card/unfold_story_app.dart';
 import 'package:mi_flash_card/xylophone_app.dart';
+import '../myWeatherApp/weatherScreens/weather_loading_screen.dart';
 
 class MyNavigationDrawer extends StatelessWidget {
   const MyNavigationDrawer({super.key});
@@ -71,6 +72,12 @@ class MyNavigationDrawer extends StatelessWidget {
         child: Wrap(
           runSpacing: 25,
           children: [
+            drawerItem(
+              context: context,
+              pageTitle: 'Weather',
+              icon: FontAwesomeIcons.cloudSunRain,
+              page: const WeatherLoadingScreen(),
+            ),
             drawerItem(
               context: context,
               pageTitle: 'BMI Calculator',

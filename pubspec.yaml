@@ -39,3 +39,6 @@ flutter:
     - family: FrederickatheGreat
       fonts:
         - asset: fonts/FrederickatheGreat-Regular.ttf
+    - family: SpartanMB
+      fonts:
+        - asset: fonts/SpartanMB-Black.otf
