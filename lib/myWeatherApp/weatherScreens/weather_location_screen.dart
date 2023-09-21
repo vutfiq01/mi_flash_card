@@ -1,16 +1,48 @@
 import 'package:flutter/material.dart';
+import 'package:mi_flash_card/myWeatherApp/weatherServices/weather_weather.dart';
 import '../weatherUtilities/weather_constants.dart';
 
 class WeatherLocationScreen extends StatefulWidget {
-  const WeatherLocationScreen({super.key});
+  const WeatherLocationScreen({super.key, required this.locationWeatherData});
+  final dynamic locationWeatherData;
 
   @override
   State<WeatherLocationScreen> createState() => _WeatherLocationScreenState();
 }
 
 class _WeatherLocationScreenState extends State<WeatherLocationScreen> {
+  String? weatherConditionIconUrl;
+  int? weatherTemparature;
+  String? weatherLocationName;
+
+  @override
+  void initState() {
+    super.initState();
+    updateUIData(widget.locationWeatherData);
+  }
+
+  void updateUIData(dynamic locationWeatherData) {
+    setState(() {
+      if (locationWeatherData == null) {
+        weatherTemparature = 0;
+        weatherLocationName =
+            'https://static-00.iconduck.com/assets.00/error-icon-2048x2037-x9opq5d3.png';
+
+        return;
+      }
+      weatherConditionIconUrl =
+          locationWeatherData['current']['condition']['icon'];
+      double doubleTypeTemparature = locationWeatherData['current']['temp_c'];
+      weatherTemparature = doubleTypeTemparature.toInt();
+
+      weatherLocationName = locationWeatherData['location']['name'];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    WeatherModel weather = WeatherModel();
+    String comment = weather.getMessage(weatherTemparature ?? 26);
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -31,40 +63,49 @@ class _WeatherLocationScreenState extends State<WeatherLocationScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      var weatherData = await weather.getLocWeaData();
+                      updateUIData(weatherData);
+                    },
                     child: const Icon(
                       Icons.near_me,
-                      size: 50.0,
+                      size: 60.0,
+                      color: Colors.white,
                     ),
                   ),
                   TextButton(
                     onPressed: () {},
                     child: const Icon(
                       Icons.location_city,
-                      size: 50.0,
+                      size: 60.0,
+                      color: Colors.white,
                     ),
                   ),
                 ],
               ),
-              const Padding(
-                padding: EdgeInsets.only(left: 15.0),
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0),
                 child: Row(
                   children: <Widget>[
                     Text(
-                      '32°',
+                      '$weatherTemparature°',
                       style: kTempTextStyle,
                     ),
-                    Text(
-                      '☀️',
-                      style: kConditionTextStyle,
+                    Image(
+                      image: NetworkImage(
+                        'http:$weatherConditionIconUrl',
+                      ),
+                      width: 100.0,
+                      height: 100.0,
+                      fit: BoxFit.fill,
                     ),
                   ],
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.only(right: 15.0),
+              Padding(
+                padding: const EdgeInsets.only(right: 15.0),
                 child: Text(
-                  "It's 🍦 time in San Francisco!",
+                  '$comment in $weatherLocationName!',
                   textAlign: TextAlign.right,
                   style: kMessageTextStyle,
                 ),
