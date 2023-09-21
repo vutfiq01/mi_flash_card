@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mi_flash_card/myWeatherApp/weatherScreens/weather_city_screen.dart';
 import 'package:mi_flash_card/myWeatherApp/weatherServices/weather_weather.dart';
 import '../weatherUtilities/weather_constants.dart';
 
@@ -25,8 +26,9 @@ class _WeatherLocationScreenState extends State<WeatherLocationScreen> {
     setState(() {
       if (locationWeatherData == null) {
         weatherTemparature = 0;
-        weatherLocationName =
+        weatherConditionIconUrl =
             'https://static-00.iconduck.com/assets.00/error-icon-2048x2037-x9opq5d3.png';
+        weatherLocationName = '';
 
         return;
       }
@@ -74,7 +76,19 @@ class _WeatherLocationScreenState extends State<WeatherLocationScreen> {
                     ),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      var typedLocation = await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const WeatherCityScreen(),
+                        ),
+                      );
+                      if (typedLocation != null) {
+                        var weatherData =
+                            await weather.getTypedLocWeaData(typedLocation);
+                        updateUIData(weatherData);
+                      }
+                    },
                     child: const Icon(
                       Icons.location_city,
                       size: 60.0,

@@ -5,6 +5,14 @@ String apiKey = 'cfac641d5ba44bfd87561432232109';
 String weatherAPIInitialUrl = 'http://api.weatherapi.com/v1/current.json?key';
 
 class WeatherModel {
+  Future<dynamic> getTypedLocWeaData(String typedLocation) async {
+    WeatherAPICaller apiDataObject = WeatherAPICaller(
+        url: '$weatherAPIInitialUrl=$apiKey&q=$typedLocation&aqi=no');
+    var apiWeatherData = await apiDataObject.getAPIData();
+
+    return apiWeatherData;
+  }
+
   Future<dynamic> getLocWeaData() async {
     Location currentLoc = Location();
     await currentLoc.getCurrentLocation();

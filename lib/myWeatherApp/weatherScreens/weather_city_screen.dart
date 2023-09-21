@@ -9,6 +9,7 @@ class WeatherCityScreen extends StatefulWidget {
 }
 
 class _WeatherCityScreenState extends State<WeatherCityScreen> {
+  String? typedLocation;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,16 +30,27 @@ class _WeatherCityScreenState extends State<WeatherCityScreen> {
                 onPressed: () {},
                 child: const Icon(
                   Icons.arrow_back_ios,
-                  size: 50.0,
+                  size: 40.0,
+                  color: Colors.white,
                 ),
               ),
             ),
             Container(
               padding: const EdgeInsets.all(20.0),
-              child: null,
+              child: TextField(
+                onChanged: (value) {
+                  typedLocation = value;
+                },
+                style: const TextStyle(
+                  color: Colors.black,
+                ),
+                decoration: kTextFieldInputDecoration,
+              ),
             ),
             TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pop(context, typedLocation);
+                },
                 child: const Text(
                   'Get Weather',
                   style: kButtonTextStyle,
