@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mi_flash_card/ask_anything_page.dart';
+import 'package:mi_flash_card/bitcoinPriceTickerApp/coin_price_screen.dart';
 import 'package:mi_flash_card/bmi_calculator_app.dart';
 import 'package:mi_flash_card/dating_profile_page.dart';
 import 'package:mi_flash_card/dice_app.dart';
@@ -72,6 +73,12 @@ class MyNavigationDrawer extends StatelessWidget {
         child: Wrap(
           runSpacing: 25,
           children: [
+            drawerItem(
+              context: context,
+              pageTitle: 'Crypto Price',
+              icon: FontAwesomeIcons.bitcoin,
+              page: const CoinPriceScreen(),
+            ),
             drawerItem(
               context: context,
               pageTitle: 'Weather',
