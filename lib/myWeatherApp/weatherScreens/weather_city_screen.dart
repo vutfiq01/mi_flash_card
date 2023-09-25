@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../widget/navigation_drawer.dart';
 import '../weatherUtilities/weather_constants.dart';
 
 class WeatherCityScreen extends StatefulWidget {
@@ -13,6 +14,10 @@ class _WeatherCityScreenState extends State<WeatherCityScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Crypto Price'),
+      ),
+      drawer: const MyNavigationDrawer(),
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(

@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 const List<String> currenciesList = [
   'AUD',
   'BRL',
@@ -21,11 +23,3 @@ const List<String> currenciesList = [
   'USD',
   'ZAR'
 ];
-
-const List<String> cryptoList = [
-  'BTC',
-  'ETH',
-  'LTC',
-];
-
-class CoinData {}

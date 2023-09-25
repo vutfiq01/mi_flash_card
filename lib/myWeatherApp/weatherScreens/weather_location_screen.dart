@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mi_flash_card/myWeatherApp/weatherScreens/weather_city_screen.dart';
 import 'package:mi_flash_card/myWeatherApp/weatherServices/weather_weather.dart';
+import '../../widget/navigation_drawer.dart';
 import '../weatherUtilities/weather_constants.dart';
 
 class WeatherLocationScreen extends StatefulWidget {
@@ -46,6 +47,10 @@ class _WeatherLocationScreenState extends State<WeatherLocationScreen> {
     WeatherModel weather = WeatherModel();
     String comment = weather.getMessage(weatherTemparature ?? 26);
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Crypto Price'),
+      ),
+      drawer: const MyNavigationDrawer(),
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
