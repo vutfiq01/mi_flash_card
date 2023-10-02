@@ -9,11 +9,43 @@ class ChatWelcomeScreen extends StatefulWidget {
   State<ChatWelcomeScreen> createState() => _ChatWelcomeScreenState();
 }
 
-class _ChatWelcomeScreenState extends State<ChatWelcomeScreen> {
+class _ChatWelcomeScreenState extends State<ChatWelcomeScreen>
+    with SingleTickerProviderStateMixin {
+  AnimationController? controller;
+  Animation? animation;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 1),
+    );
+
+    animation = ColorTween(
+      begin: Colors.purple[100],
+      end: Colors.white,
+    ).animate(controller!);
+
+    controller!.forward();
+
+    controller!.addListener(() {
+      setState(() {});
+      // ignore: avoid_print
+      print(animation!.value);
+    });
+  }
+
+  @override
+  void dispose() {
+    controller!.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: animation!.value,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
@@ -22,9 +54,12 @@ class _ChatWelcomeScreenState extends State<ChatWelcomeScreen> {
           children: <Widget>[
             Row(
               children: <Widget>[
-                SizedBox(
-                  height: 60.0,
-                  child: Image.asset('images/chatlogo.png'),
+                Hero(
+                  tag: 'logo',
+                  child: SizedBox(
+                    height: 60.0,
+                    child: Image.asset('images/chatlogo.png'),
+                  ),
                 ),
                 const Text(
                   'Parrots Chat',

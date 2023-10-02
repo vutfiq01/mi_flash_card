@@ -19,9 +19,12 @@ class _ChatLoginScreenState extends State<ChatLoginScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            SizedBox(
-              height: 200.0,
-              child: Image.asset('images/chatlogo.png'),
+            Hero(
+              tag: 'logo',
+              child: SizedBox(
+                height: 200.0,
+                child: Image.asset('images/chatlogo.png'),
+              ),
             ),
             const SizedBox(
               height: 48.0,
