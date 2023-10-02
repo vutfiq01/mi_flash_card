@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mi_flash_card/myChatApp/chatApp_screens/chat_screen.dart';
 
 class ChatLoginScreen extends StatefulWidget {
   const ChatLoginScreen({super.key});
@@ -85,6 +86,12 @@ class _ChatLoginScreenState extends State<ChatLoginScreen> {
                 elevation: 5.0,
                 child: MaterialButton(
                   onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ChatScreen(),
+                      ),
+                    );
                     //Implement login functionality.
                   },
                   minWidth: 200.0,

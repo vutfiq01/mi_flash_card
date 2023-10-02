@@ -12,6 +12,7 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         leading: null,
         actions: <Widget>[
@@ -21,7 +22,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 //Implement logout functionality
               }),
         ],
-        title: const Text('🦜Chat'),
+        title: const Text('🦜 Chat'),
         backgroundColor: Colors.purpleAccent,
       ),
       body: SafeArea(
@@ -29,6 +30,9 @@ class _ChatScreenState extends State<ChatScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
+            const SizedBox(
+              height: 5.0,
+            ),
             Container(
               decoration: kMessageContainerDecoration,
               child: Row(
