@@ -15,7 +15,7 @@ class _WeatherCityScreenState extends State<WeatherCityScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Crypto Price'),
+        title: const Text('Weather'),
       ),
       drawer: const MyNavigationDrawer(),
       body: Container(
