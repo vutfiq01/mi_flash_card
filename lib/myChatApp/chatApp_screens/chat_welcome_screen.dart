@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mi_flash_card/myChatApp/chatApp_screens/chat_login_screen.dart';
 import 'package:mi_flash_card/myChatApp/chatApp_screens/chat_registration_screen.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
+import '../chatAppComponents/chatapp_rounded_button.dart';
 
 class ChatWelcomeScreen extends StatefulWidget {
   const ChatWelcomeScreen({super.key});
@@ -31,8 +33,6 @@ class _ChatWelcomeScreenState extends State<ChatWelcomeScreen>
 
     controller!.addListener(() {
       setState(() {});
-      // ignore: avoid_print
-      print(animation!.value);
     });
   }
 
@@ -61,69 +61,48 @@ class _ChatWelcomeScreenState extends State<ChatWelcomeScreen>
                     child: Image.asset('images/chatlogo.png'),
                   ),
                 ),
-                const Text(
-                  'Parrots Chat',
-                  style: TextStyle(
-                    fontSize: 38.0,
-                    fontWeight: FontWeight.w900,
-                  ),
+                AnimatedTextKit(
+                  totalRepeatCount: 7,
+                  animatedTexts: [
+                    TypewriterAnimatedText(
+                      'Parrots Chat',
+                      speed: const Duration(milliseconds: 300),
+                      textStyle: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 45.0,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
             const SizedBox(
               height: 48.0,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                elevation: 5.0,
-                color: Colors.purpleAccent,
-                borderRadius: BorderRadius.circular(30.0),
-                child: MaterialButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const ChatLoginScreen(),
-                      ),
-                    );
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: const Text(
-                    'Log In',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
+            RoundedButton(
+              title: 'Log In',
+              color: Colors.purpleAccent,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ChatLoginScreen(),
                   ),
-                ),
-              ),
+                );
+              },
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                color: Colors.deepPurpleAccent,
-                borderRadius: BorderRadius.circular(30.0),
-                elevation: 5.0,
-                child: MaterialButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const ChatRegistrationScreen(),
-                      ),
-                    );
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: const Text(
-                    'Register',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
+            RoundedButton(
+              title: 'Register',
+              color: Colors.deepPurpleAccent,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ChatRegistrationScreen(),
                   ),
-                ),
-              ),
+                );
+              },
             ),
           ],
         ),
