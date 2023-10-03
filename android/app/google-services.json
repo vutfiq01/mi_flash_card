@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "204682470217",
+    "project_id": "parrots-chat",
+    "storage_bucket": "parrots-chat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:204682470217:android:e8c2d7ebe5a8d5a3173098",
+        "android_client_info": {
+          "package_name": "com.example.mi_flash_card"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLGyKtGKinxQRjFhlz9vqvMHYg_-xFaP4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
