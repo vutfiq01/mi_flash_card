@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mi_flash_card/myChatApp/chatApp_screens/chat_screen.dart';
 import '../chatAppComponents/chatapp_rounded_button.dart';
 import '../chat_app_constants.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class ChatRegistrationScreen extends StatefulWidget {
   const ChatRegistrationScreen({super.key});
@@ -10,6 +12,10 @@ class ChatRegistrationScreen extends StatefulWidget {
 }
 
 class _ChatRegistrationScreenState extends State<ChatRegistrationScreen> {
+  final _auth = FirebaseAuth.instance;
+  late String email;
+  late String password;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,8 +37,10 @@ class _ChatRegistrationScreenState extends State<ChatRegistrationScreen> {
               height: 48.0,
             ),
             TextField(
+              keyboardType: TextInputType.emailAddress,
+              textAlign: TextAlign.center,
               onChanged: (value) {
-                //Do something with the user input.
+                email = value;
               },
               decoration: kInputDecoration(
                 hintText: 'Enter your email',
@@ -43,8 +51,10 @@ class _ChatRegistrationScreenState extends State<ChatRegistrationScreen> {
               height: 8.0,
             ),
             TextField(
+              obscureText: true,
+              textAlign: TextAlign.center,
               onChanged: (value) {
-                //Do something with the user input.
+                password = value;
               },
               decoration: kInputDecoration(
                   hintText: 'Enter your password',
@@ -56,7 +66,27 @@ class _ChatRegistrationScreenState extends State<ChatRegistrationScreen> {
             RoundedButton(
               title: 'Register',
               color: Colors.deepPurpleAccent,
-              onPressed: () {},
+              onPressed: () async {
+                try {
+                  final newUser = await _auth.createUserWithEmailAndPassword(
+                    email: email,
+                    password: password,
+                  );
+                  // ignore: unnecessary_null_comparison
+                  if (newUser != null) {
+                    if (!mounted) return;
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ChatScreen(),
+                      ),
+                    );
+                  }
+                } catch (e) {
+                  // ignore: avoid_print
+                  print(e);
+                }
+              },
             ),
           ],
         ),

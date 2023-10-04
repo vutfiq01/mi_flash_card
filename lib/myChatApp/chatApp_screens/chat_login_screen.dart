@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mi_flash_card/myChatApp/chatApp_screens/chat_screen.dart';
 import 'package:mi_flash_card/myChatApp/chat_app_constants.dart';
 import '../chatAppComponents/chatapp_rounded_button.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class ChatLoginScreen extends StatefulWidget {
   const ChatLoginScreen({super.key});
@@ -11,6 +12,10 @@ class ChatLoginScreen extends StatefulWidget {
 }
 
 class _ChatLoginScreenState extends State<ChatLoginScreen> {
+  final _auth = FirebaseAuth.instance;
+  late String email;
+  late String password;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,8 +37,10 @@ class _ChatLoginScreenState extends State<ChatLoginScreen> {
               height: 48.0,
             ),
             TextField(
+              keyboardType: TextInputType.emailAddress,
+              textAlign: TextAlign.center,
               onChanged: (value) {
-                //Do something with the user input.
+                email = value;
               },
               decoration: kInputDecoration(
                 hintText: 'Enter your email',
@@ -44,8 +51,10 @@ class _ChatLoginScreenState extends State<ChatLoginScreen> {
               height: 8.0,
             ),
             TextField(
+              obscureText: true,
+              textAlign: TextAlign.center,
               onChanged: (value) {
-                //Do something with the user input.
+                password = value;
               },
               decoration: kInputDecoration(
                 hintText: 'Enter your password',
@@ -58,13 +67,24 @@ class _ChatLoginScreenState extends State<ChatLoginScreen> {
             RoundedButton(
               title: 'Log In',
               color: Colors.purpleAccent,
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const ChatScreen(),
-                  ),
-                );
+              onPressed: () async {
+                try {
+                  final loggedUser = await _auth.signInWithEmailAndPassword(
+                      email: email, password: password);
+                  // ignore: unnecessary_null_comparison
+                  if (loggedUser != null) {
+                    if (!mounted) return;
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ChatScreen(),
+                      ),
+                    );
+                  }
+                } catch (e) {
+                  // ignore: avoid_print
+                  print(e);
+                }
               },
             ),
           ],
