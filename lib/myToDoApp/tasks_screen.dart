@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mi_flash_card/myToDoApp/todo_constants.dart';
 import 'todoAppWidgets/todo_task_list.dart';
 import 'todo_add_task_screen.dart';
 
@@ -8,12 +9,18 @@ class TasksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF0163F8),
+      backgroundColor: kToDoAppColor,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(
             context: context,
-            builder: (context) => const AddTaskScreen(),
+            builder: (context) => SingleChildScrollView(
+              child: Container(
+                padding: EdgeInsets.only(
+                    bottom: MediaQuery.of(context).viewInsets.bottom),
+                child: const AddTaskScreen(),
+              ),
+            ),
             isScrollControlled: true,
             shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(
@@ -22,7 +29,7 @@ class TasksScreen extends StatelessWidget {
             ),
           );
         },
-        backgroundColor: const Color(0xFF0163F8),
+        backgroundColor: kToDoAppColor,
         child: const Icon(Icons.add),
       ),
       body: Column(
@@ -35,7 +42,7 @@ class TasksScreen extends StatelessWidget {
               right: 30.0,
               bottom: 30.0,
             ),
-            child: const Column(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 CircleAvatar(
@@ -44,13 +51,13 @@ class TasksScreen extends StatelessWidget {
                   child: Icon(
                     Icons.list,
                     size: 45.0,
-                    color: Color(0xFF0163F8),
+                    color: kToDoAppColor,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10.0,
                 ),
-                Text(
+                const Text(
                   'Taskery',
                   style: TextStyle(
                     fontSize: 60.0,
@@ -58,7 +65,7 @@ class TasksScreen extends StatelessWidget {
                     color: Colors.white,
                   ),
                 ),
-                Text(
+                const Text(
                   '12 Tasks',
                   style: TextStyle(
                     fontSize: 18.0,

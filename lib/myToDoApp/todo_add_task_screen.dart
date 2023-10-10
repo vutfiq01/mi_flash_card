@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'todo_constants.dart';
 
 class AddTaskScreen extends StatelessWidget {
   const AddTaskScreen({super.key});
@@ -6,29 +7,29 @@ class AddTaskScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.70,
+      //height: MediaQuery.of(context).size.height * 0.70,
       padding: const EdgeInsets.all(30.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          const Text(
+          Text(
             'Add Task',
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 25.0,
-              color: Color(0xFF0163F8),
+              color: kToDoAppColor,
             ),
           ),
-          const TextField(
+          TextField(
             autofocus: true,
             textAlign: TextAlign.center,
-            cursorColor: Color(0xFF0163F8),
+            cursorColor: kToDoAppColor,
             decoration: InputDecoration(
               enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Color(0xFF0163F8)),
+                borderSide: BorderSide(color: kToDoAppColor),
               ),
               focusedBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Color(0xFF0163F8)),
+                borderSide: BorderSide(color: kToDoAppColor),
               ),
             ),
           ),
@@ -37,7 +38,7 @@ class AddTaskScreen extends StatelessWidget {
           ),
           TextButton(
             style: TextButton.styleFrom(
-              backgroundColor: const Color(0xFF0163F8), // Background Color
+              backgroundColor: kToDoAppColor,
             ),
             onPressed: () {},
             child: const Text(
