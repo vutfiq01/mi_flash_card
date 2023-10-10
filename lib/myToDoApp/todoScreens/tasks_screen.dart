@@ -1,10 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:mi_flash_card/myToDoApp/todoConstants/todo_constants.dart';
 import '../todoAppWidgets/todo_task_list.dart';
+import '../todoModels/todo_task_model.dart';
 import 'todo_add_task_screen.dart';
 
-class TasksScreen extends StatelessWidget {
+class TasksScreen extends StatefulWidget {
   const TasksScreen({super.key});
+
+  @override
+  State<TasksScreen> createState() => _TasksScreenState();
+}
+
+class _TasksScreenState extends State<TasksScreen> {
+  List<Task> tasks = [
+    Task(name: 'Learn Flutter 1'),
+    Task(name: 'Learn Flutter 2'),
+    Task(name: 'Learn Flutter 3'),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +30,12 @@ class TasksScreen extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.only(
                     bottom: MediaQuery.of(context).viewInsets.bottom),
-                child: const AddTaskScreen(),
+                child: AddTaskScreen(taskListCallback: (newTaskTitle) {
+                  setState(() {
+                    tasks.add(Task(name: newTaskTitle));
+                  });
+                  Navigator.pop(context);
+                }),
               ),
             ),
             isScrollControlled: true,
@@ -65,9 +82,9 @@ class TasksScreen extends StatelessWidget {
                     color: Colors.white,
                   ),
                 ),
-                const Text(
-                  '12 Tasks',
-                  style: TextStyle(
+                Text(
+                  '${tasks.length} Tasks',
+                  style: const TextStyle(
                     fontSize: 18.0,
                     color: Colors.white,
                   ),
@@ -85,7 +102,9 @@ class TasksScreen extends StatelessWidget {
                   topRight: Radius.circular(20.0),
                 ),
               ),
-              child: const TaskList(),
+              child: TaskList(
+                tasks: tasks,
+              ),
             ),
           )
         ],
