@@ -8,7 +8,7 @@ import 'package:mi_flash_card/dice_app.dart';
 import 'package:mi_flash_card/general_profile.dart';
 import 'package:mi_flash_card/job_profile_page.dart';
 import 'package:mi_flash_card/myChatApp/chatApp_screens/chat_welcome_screen.dart';
-import 'package:mi_flash_card/myToDoApp/tasks_screen.dart';
+import 'package:mi_flash_card/myToDoApp/todoScreens/tasks_screen.dart';
 import 'package:mi_flash_card/quiz_app.dart';
 import 'package:mi_flash_card/unfold_story_app.dart';
 import 'package:mi_flash_card/xylophone_app.dart';
@@ -78,7 +78,7 @@ class MyNavigationDrawer extends StatelessWidget {
             drawerItem(
               context: context,
               pageTitle: 'Taskery',
-              icon: Icons.format_list_bulleted_add,
+              icon: Icons.list,
               page: const TasksScreen(),
             ),
             drawerItem(

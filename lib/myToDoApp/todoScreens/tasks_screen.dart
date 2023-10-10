@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mi_flash_card/myToDoApp/todo_constants.dart';
-import 'todoAppWidgets/todo_task_list.dart';
+import 'package:mi_flash_card/myToDoApp/todoConstants/todo_constants.dart';
+import '../todoAppWidgets/todo_task_list.dart';
 import 'todo_add_task_screen.dart';
 
 class TasksScreen extends StatelessWidget {
