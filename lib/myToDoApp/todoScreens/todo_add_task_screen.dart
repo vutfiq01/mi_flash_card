@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:mi_flash_card/myToDoApp/todoModels/todo_task_data.dart';
 import '../todoConstants/todo_constants.dart';
+import 'package:provider/provider.dart';
 
 class AddTaskScreen extends StatelessWidget {
-  final Function taskListCallback;
-
   const AddTaskScreen({
     super.key,
-    required this.taskListCallback,
   });
 
   @override
   Widget build(BuildContext context) {
-    String? newTaskTitle;
+    late String newTaskTitle;
     return Container(
       //height: MediaQuery.of(context).size.height * 0.70,
       padding: const EdgeInsets.all(30.0),
@@ -50,7 +49,9 @@ class AddTaskScreen extends StatelessWidget {
               backgroundColor: kToDoAppColor,
             ),
             onPressed: () {
-              taskListCallback(newTaskTitle);
+              Provider.of<TaskData>(context, listen: false)
+                  .addTask(newTaskTitle);
+              Navigator.pop(context);
             },
             child: const Text(
               'Add',
